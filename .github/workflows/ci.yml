@@ -40,6 +40,6 @@ jobs:
       with:
         add: '.'
         message: "formatting changes"
-        new_branch: ${{ github.ref }}
+        new_branch: ${{ github.ref_name }}
         push: true
 
