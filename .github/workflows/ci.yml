@@ -42,6 +42,6 @@ jobs:
       uses: EndBug/add-and-commit@v9
       with:
         add: '.'
-        message: "formatting changes"
-        new_branch: "${{ github.head_ref }}-format-fix"
+        message: "[auto] formatting changes"
+        new_branch: "${{ github.head_ref }}"
         push: true
