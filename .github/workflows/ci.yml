@@ -37,11 +37,6 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
 
-    - name: Echo
-      run: 
-        echo ${{ github.event_name }}
-        echo ${{ github.event.action }}
-
   format:
     if: github.event_name == 'pull_request'
     needs: build
