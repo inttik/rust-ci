@@ -1,4 +1,4 @@
-use serde::{Deserialize, Serialize};
+use sere::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 struct Person {
