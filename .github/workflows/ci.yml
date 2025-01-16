@@ -26,6 +26,7 @@ jobs:
       run: cargo test
 
   format:
+    needs: build
     runs-on: ubuntu-latest
     permissions: write-all
 
