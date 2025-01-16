@@ -39,5 +39,4 @@ jobs:
       with:
         add: '.'
         message: "formatting changes"
-        
-    
+        push: false
