@@ -38,6 +38,7 @@ jobs:
       run: cargo test --verbose
 
   format:
+    if: github.event_name == 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions: write-all

@@ -9,7 +9,7 @@ struct Person {
 fn main() {
     let p = Person {
         name: "men".to_string(),
-        age: 254,
+        age: 24,
         phones: vec!["7-909-...".to_string(), "8-925-...".to_string()],
     };
 
