@@ -34,15 +34,11 @@ jobs:
 
     - name: Run formatter
       run: cargo fmt
-    
-    - name: Print branch name
-      run: echo "${{ github.head_ref }}"
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v9
       with:
         add: '.'
         message: "formatting changes"
-        new_branch: "pupupu"
-        push: false
-
+        new_branch: ${{ github.head_ref }}
+        push: true
