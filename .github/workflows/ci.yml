@@ -40,5 +40,5 @@ jobs:
       with:
         add: '.'
         message: "formatting changes"
-        new_branch: ${{ github.head_ref }}
+        new_branch: "${{ github.head_ref }}/format-fix"
         push: true
