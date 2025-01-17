@@ -48,6 +48,7 @@ jobs:
       with:
         repository: ${{ github.event.pull_request.head.repo.full_name }}
         ref: ${{ github.event.pull_request.head.ref }}
+        token: ${{ secrets.PAT }}
 
     - name: Run formatter
       run: cargo fmt
@@ -59,4 +60,3 @@ jobs:
         message: "[auto] formatting changes"
         new_branch: "${{ github.head_ref }}"
         push: true
-        default_author: github_actions
