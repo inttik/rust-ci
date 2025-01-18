@@ -65,6 +65,9 @@ jobs:
         push: true
         default_author: user_info
       
+    - name: Echo is pushed 
+      run: echo ${{ steps.commit.outputs.pushed }}
+
     - name: Fail if commited
-      if: steps.commit.outputs.pushed
+      if: steps.commit.outputs.pushed == true
       run: false
