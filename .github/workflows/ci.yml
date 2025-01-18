@@ -11,6 +11,7 @@ env:
 
 jobs:
   build:
+    needs: format
     runs-on: ubuntu-latest
 
     steps:
@@ -38,25 +39,35 @@ jobs:
       run: cargo test --verbose
 
   format:
-    if: github.event_name == 'pull_request'
-    needs: build
     runs-on: ubuntu-latest
     permissions: write-all
 
     steps:
     - uses: actions/checkout@v4
+      if: github.event_name == 'pull_request'
       with:
         repository: ${{ github.event.pull_request.head.repo.full_name }}
         ref: ${{ github.event.pull_request.head.ref }}
+        token: ${{ secrets.PAT }}
 
     - name: Run formatter
+      if: github.event_name == 'pull_request'
       run: cargo fmt
 
     - name: Commit changes
+      if: github.event_name == 'pull_request'
+      id: commit
       uses: EndBug/add-and-commit@v9
       with:
         add: '.'
         message: "[auto] formatting changes"
         new_branch: "${{ github.head_ref }}"
         push: true
-        default_author: github_actions
+        default_author: user_info
+      
+    - name: Echo is pushed 
+      run: echo ${{ steps.commit.outputs.pushed }} ${{ github.event_name }} ${{ steps.commit.outputs.pushed == 'true' }}
+
+    - name: Fail if commited
+      if: ${{ steps.commit.outputs.pushed == 'true' }}
+      run: false
