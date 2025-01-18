@@ -66,5 +66,5 @@ jobs:
         default_author: user_info
       
     - name: Fail if commited
-      if: steps.commit.pushed
+      if: steps.commit.outputs.pushed
       run: false
